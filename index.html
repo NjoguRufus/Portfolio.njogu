@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rufus njogu - Web Designer & Developer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Optional: Custom styles for transitions */
+        .menu-open {
+            transform: translateX(0);
+        }
+        .menu-closed {
+            transform: translateX(-100%);
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .spin {
+            animation: spin 1s linear infinite;
+        }
+        .button-break {
+    position: relative;
+    overflow: hidden;
+}
+
+.button-text {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.button-break:hover .button-text {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+.button-break::after {
+    content: 'Get in Touch';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 1.125rem; /* Adjust size as needed */
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.button-break:hover::after {
+    opacity: 1;
+}
+
+
+        
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+    <!-- Navbar -->
+    <nav class="bg-gray-900 text-white fixed w-full top-0 left-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="text-2xl font-bold text-white hover:text-gray-400">
+                <span class="text-yellow-400">Rufus</span> Njogu
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="hover:text-yellow-400 transition duration-300 flex items-center">
+                    <i class="fas fa-home mr-2"></i> Home
+                </a>
+                <a href="#services" class="hover:text-yellow-400 transition duration-300 flex items-center">
+                    <i class="fas fa-cogs mr-2"></i> Services
+                </a>
+                <a href="#work" class="hover:text-yellow-400 transition duration-300 flex items-center">
+                    <i class="fas fa-briefcase mr-2"></i> Work
+                </a>
+                <a href="#contact" class="hover:text-yellow-400 transition duration-300 flex items-center">
+                    <i class="fas fa-envelope mr-2"></i> Contact
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="menuButton" class="md:hidden text-white focus:outline-none">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden fixed top-0 left-0 w-full h-full bg-gray-800 transform menu-closed transition-transform duration-300 ease-in-out">
+            <div class="flex justify-end p-4">
+                <button id="closeButton" class="text-white">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col items-center mt-12 space-y-4">
+                <a href="#home" class="block py-2 px-6 text-white hover:bg-gray-700 transition duration-300 flex items-center">
+                    <i class="fas fa-home mr-2"></i> Home
+                </a>
+                <a href="#services" class="block py-2 px-6 text-white hover:bg-gray-700 transition duration-300 flex items-center">
+                    <i class="fas fa-cogs mr-2"></i> Services
+                </a>
+                <a href="#work" class="block py-2 px-6 text-white hover:bg-gray-700 transition duration-300 flex items-center">
+                    <i class="fas fa-briefcase mr-2"></i> Work
+                </a>
+                <a href="#contact" class="block py-2 px-6 text-white hover:bg-gray-700 transition duration-300 flex items-center">
+                    <i class="fas fa-envelope mr-2"></i> Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+  <!-- Hero Section -->
+<section class="h-screen flex flex-col justify-center items-center bg-cover bg-center relative" style="background-image: url('https://bairesdev.mo.cloudinary.net/blog/2023/09/How-Many-Web-Developers-in-the-World-1.jpg');">
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div class="relative z-10 text-center text-white">
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight">
+            <span id="typing-text"></span>
+        </h1>
+        <p class="mt-4 text-lg md:text-xl">Transforming ideas into functional digital experiences.</p>
+        <button onclick="openWhatsApp()" class="mt-8 px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full text-lg transition duration-300 button-break">
+            <span class="button-text">Get Started</span>
+        </button>
+    </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const text = "I Design & Build Modern Websites";
+    const typingText = document.getElementById('typing-text');
+    let index = 0;
+
+    function type() {
+      if (index < text.length) {
+        typingText.textContent += text.charAt(index);
+        index++;
+        setTimeout(type, 100); // Adjust typing speed here
+      }
+    }
+
+    type();
+  });
+</script>
+
+
+
+    <script>
+        function openWhatsApp() {
+            var message = "Hi, I'm interested in your web design services. Could you please let me know what options you offer?";
+            var whatsappUrl = `https://wa.me/254714748299?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        document.getElementById('menuButton').addEventListener('click', function() {
+            var menu = document.getElementById('mobileMenu');
+            menu.classList.remove('menu-closed');
+            menu.classList.add('menu-open');
+        });
+
+        document.getElementById('closeButton').addEventListener('click', function() {
+            var menu = document.getElementById('mobileMenu');
+            menu.classList.remove('menu-open');
+            menu.classList.add('menu-closed');
+        });
+    </script>
+  <!-- About Section -->
+<section id="about" class="py-16 bg-gradient-to-r from-gray-100 via-gray-200 to-gray-300 rounded-b-3xl overflow-hidden">
+    <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+        <!-- Image Section -->
+        <div class="md:w-1/3 mb-8 md:mb-0">
+            <img src="Njogu pp.jpg" alt="Rufus" class="w-48 h-48 rounded-full mx-auto md:mx-0 md:mr-8 shadow-xl transform hover:scale-105 transition-transform duration-300 ease-in-out">
+        </div>
+        <!-- Text Section -->
+        <div class="md:w-2/3 text-center md:text-left">
+            <h2 class="text-4xl font-extrabold text-gray-900 mb-4 transition-colors duration-300 hover:text-blue-600">About Me</h2>
+            <p class="text-lg text-gray-700 leading-relaxed">I’m a passionate web designer and developer with experience in creating stylish and functional websites. Let’s work together to bring your ideas to life!</p>
+        </div>
+    </div>
+</section>
+
+
+
+  <!-- Services Section -->
+  <section id="services" class="py-16 bg-gray-50 rounded-b-3xl overflow-hidden">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold text-gray-800 mb-12">My Services</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Service Item 1 -->
+            <div id="service-1" class="service-item bg-white shadow-md p-8 relative overflow-hidden rounded-lg transition-transform transform hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-blue-500">
+                <!-- Diagonal Corners -->
+                <div class="absolute inset-0 transform rotate-45 bg-gray-100 -translate-y-1/2 translate-x-1/2 w-48 h-48 rounded-lg"></div>
+                <!-- Content -->
+                <div class="relative z-10">
+                    <div class="mb-4">
+                        <svg class="w-16 h-16 text-blue-600 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">Web Design</h3>
+                    <p class="mt-4 text-gray-600">Crafting clean, responsive designs that look great on any device.</p>
+                </div>
+            </div>
+
+            <!-- Service Item 2 -->
+            <div id="service-2" class="service-item bg-white shadow-md p-8 relative overflow-hidden rounded-lg transition-transform transform hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-green-500">
+                <!-- Diagonal Corners -->
+                <div class="absolute inset-0 transform rotate-45 bg-gray-100 -translate-y-1/2 translate-x-1/2 w-48 h-48 rounded-lg"></div>
+                <!-- Content -->
+                <div class="relative z-10">
+                    <div class="mb-4">
+                        <svg class="w-16 h-16 text-green-600 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7-7v14"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">Web Development</h3>
+                    <p class="mt-4 text-gray-600">Building efficient, scalable websites with modern technologies.</p>
+                </div>
+            </div>
+
+            <!-- Service Item 3 -->
+            <div id="service-3" class="service-item bg-white shadow-md p-8 relative overflow-hidden rounded-lg transition-transform transform hover:scale-105 hover:shadow-xl hover:ring-2 hover:ring-red-500">
+                <!-- Diagonal Corners -->
+                <div class="absolute inset-0 transform rotate-45 bg-gray-100 -translate-y-1/2 translate-x-1/2 w-48 h-48 rounded-lg"></div>
+                <!-- Content -->
+                <div class="relative z-10">
+                    <div class="mb-4">
+                        <svg class="w-16 h-16 text-red-600 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800">E-commerce Solutions</h3>
+                    <p class="mt-4 text-gray-600">Creating seamless online shopping experiences for your customers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.querySelectorAll('.service-item').forEach(item => {
+        item.addEventListener('click', function() {
+            // Remove the spin class from all items
+            document.querySelectorAll('.service-item').forEach(el => el.classList.remove('spin'));
+            
+            // Add the spin class to the clicked item
+            this.classList.add('spin');
+            
+            // Optional: remove the spin class after animation completes (1s)
+            setTimeout(() => this.classList.remove('spin'), 1000);
+        });
+    });
+</script>
+
+<script>
+    document.querySelectorAll('.service-item').forEach(item => {
+        item.addEventListener('click', function() {
+            // Remove the spin class from all items
+            document.querySelectorAll('.service-item').forEach(el => el.classList.remove('spin'));
+            
+            // Add the spin class to the clicked item
+            this.classList.add('spin');
+            
+            // Optional: remove the spin class after animation completes (1s)
+            setTimeout(() => this.classList.remove('spin'), 1000);
+        });
+    });
+</script>
+
+
+<!-- Work Section -->
+<section id="work" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold text-gray-800 mb-12">My Projects </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Land Nest Properties -->
+            <div class="bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:animate-wobble click:animate-spin" data-spin="false">
+                <a href="https://landnestproperties.vercel.app/" target="_blank">
+                    <img src="https://scontent.fnbo8-1.fna.fbcdn.net/v/t39.30808-6/224193452_115156577515295_8425644415172543885_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=l7KNtmuivcgQ7kNvgHkT_uj&_nc_ht=scontent.fnbo8-1.fna&_nc_gid=A4DR54IcD25Ywq2mzHSeLay&oh=00_AYAtnOdphBBvKH0JN3Sdb1dlBx9y8RDhgMXumERqioq1GA&oe=66DB43B9" alt="Land Nest Properties" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800">Land Nest Properties</h3>
+                        <p class="mt-4 text-gray-600">A platform showcasing prime real estate properties.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- FoodBridge -->
+            <div class="bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:animate-wobble click:animate-spin" data-spin="false">
+                <a href="https://foodbridge-project.vercel.app/home" target="_blank">
+                    <img src="https://scontent.fnbo8-1.fna.fbcdn.net/v/t39.30808-6/271145172_230737615878698_2325518386241442128_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=6ldug2qNJqYQ7kNvgFuUlvs&_nc_ht=scontent.fnbo8-1.fna&oh=00_AYCnNiEqlecktmNKa1W3NkezpmiqbYD1LKQRRcSDT3qiFg&oe=66DB518F" alt="FoodBridge" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800">FoodBridge</h3>
+                        <p class="mt-4 text-gray-600">A platform for volunteers to contribute or donate to food projects.</p>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Key Company -->
+            <div class="bg-white shadow-md rounded-lg overflow-hidden transition-transform transform hover:animate-wobble click:animate-spin" data-spin="false">
+                <a href="https://keycompany.vercel.app/" target="_blank">
+                    <img src="https://scontent.fnbo8-1.fna.fbcdn.net/v/t39.30808-6/310802015_142204425224129_5556826171229338506_n.png?_nc_cat=111&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=v71m9bO97BoQ7kNvgGedO7L&_nc_ht=scontent.fnbo8-1.fna&oh=00_AYBwD0ruMW627WMLqq_QVf3UQ5n7fXqen6hsLG7nooh-xg&oe=66DB70F7" alt="Key Company" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800">Key Company</h3>
+                        <p class="mt-4 text-gray-600">A business platform showcasing various services and products.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- GitHub Button -->
+        <div class="mt-12">
+            <a href="https://github.com/NjoguRufus?tab=repositories" target="_blank" class="inline-block px-6 py-3 bg-blue-600 text-white font-bold rounded-full shadow-lg hover:bg-blue-700 transition duration-300">
+                View More on GitHub
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<style>
+@keyframes wobble {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(-15deg); }
+  30% { transform: rotate(10deg); }
+  45% { transform: rotate(-5deg); }
+  60% { transform: rotate(0deg); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.hover\:animate-wobble:hover {
+  animation: wobble 0.8s ease-in-out;
+}
+
+.click\:animate-spin.clicked {
+  animation: spin 1s linear;
+}
+</style>
+
+<script>
+document.querySelectorAll('.click\:animate-spin').forEach(item => {
+  item.addEventListener('click', function() {
+    const isSpinning = this.classList.contains('clicked');
+    // Remove any existing spin animation
+    this.classList.remove('clicked');
+    void this.offsetWidth; // Trigger reflow to restart animation
+    if (!isSpinning) {
+      this.classList.add('clicked');
+    }
+  });
+});
+</script>
+
+
+<!-- Contact Section -->
+<section id="contact" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold text-gray-800 mb-12">Contact Me</h2>
+        <div class="max-w-lg mx-auto bg-white shadow-md rounded-lg p-8">
+            <form id="contactForm">
+                <div class="mb-6">
+                    <input type="text" id="name" class="w-full border-2 border-gray-300 p-4 rounded-lg" placeholder="Your Name" required>
+                </div>
+                <div class="mb-6">
+                    <textarea id="message" class="w-full border-2 border-gray-300 p-4 rounded-lg" placeholder="Your Message" rows="4" required></textarea>
+                </div>
+                <button type="button" onclick="sendWhatsAppMessage()" class="w-full bg-green-500 text-white py-4 rounded-lg hover:bg-green-600 transition duration-300 wave-button">
+                    Send Message 
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes wave {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+    }
+
+    .wave-button:hover {
+        animation: wave 0.6s ease-in-out;
+    }
+</style>
+
+<script>
+    function sendWhatsAppMessage() {
+        var name = document.getElementById('name').value;
+        var message = document.getElementById('message').value;
+        
+        if (name.trim() === "" || message.trim() === "") {
+            alert("Please fill out both fields.");
+            return;
+        }
+        
+        var whatsappMessage = `Hi, my name is ${encodeURIComponent(name)}. ${encodeURIComponent(message)}`;
+        var whatsappUrl = `https://wa.me/254714748299?text=${whatsappMessage}`;
+        
+        window.open(whatsappUrl, '_blank');
+    }
+</script>
+
+
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-6 text-center">
+        <p>&copy; 2024 Rufus Njogu. All rights reserved.</p>
+        <nav class="mt-4">
+            <a href="#about" class="hover:underline mx-2">About</a>
+            <a href="#services" class="hover:underline mx-2">Services</a>
+            <a href="#portfolio" class="hover:underline mx-2">Portfolio</a>
+            <a href="#contact" class="hover:underline mx-2">Contact</a>
+        </nav>
+    </footer>
+
+</body>
+</html>

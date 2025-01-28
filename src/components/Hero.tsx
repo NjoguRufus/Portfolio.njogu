@@ -16,6 +16,11 @@ export function Hero() {
     }
   }, [index, fullText]);
 
+  const handleGetStarted = () => {
+    const message = "💻✨ Hi Astraronix Solutions! I'm interested in exploring your 🌐 web services!";
+    window.open(`https://wa.me/254714748299?text=${encodeURIComponent(message)}`, '_blank');
+  };
+
   return (
     <section
       className="h-screen flex flex-col justify-center items-center relative overflow-hidden rounded-b-3xl"
@@ -40,7 +45,7 @@ export function Hero() {
         <p className="mt-4 text-lg md:text-xl text-gray-300 leading-relaxed">
           Transforming ideas into functional digital experiences with a touch of innovation.
         </p>
-        <div className="mt-8" onClick={() => window.open(`https://wa.me/254714748299`, '_blank')}>
+        <div className="mt-8" onClick={handleGetStarted}>
           <GetStartedButton />
         </div>
       </motion.div>

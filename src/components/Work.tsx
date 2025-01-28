@@ -58,6 +58,61 @@ const projects = [
     }
   },
   {
+    title: 'Spirit Haven',
+    description: 'Premium liquor store with an elegant catalog and sophisticated shopping experience.',
+    image: 'https://i.imgur.com/GV6HTtf.jpg',
+    url: 'https://spirit-haven.vercel.app/',
+    stats: {
+      views: 2100,
+      likes: 980,
+      shares: 420
+    }
+  },
+  {
+    title: 'FoodBridge',
+    description: 'An innovative food delivery platform connecting restaurants with customers.',
+    image: 'https://i.imgur.com/E2LHsWj.jpg',
+    url: 'https://foodbridge-project.vercel.app/home',
+    stats: {
+      views: 1950,
+      likes: 890,
+      shares: 380
+    }
+  },
+  {
+    title: 'LandNest Properties',
+    description: 'Real estate platform showcasing properties with detailed listings.',
+    image: 'https://i.imgur.com/krQnIbd.jpg',
+    url: 'https://landnestproperties.vercel.app/',
+    stats: {
+      views: 1850,
+      likes: 920,
+      shares: 380
+    }
+  },
+  {
+    title: 'Key Company',
+    description: 'Corporate website with modern design and professional aesthetics.',
+    image: 'https://i.imgur.com/inGRYIf.jpg',
+    url: 'https://keycompany.vercel.app/',
+    stats: {
+      views: 1750,
+      likes: 890,
+      shares: 340
+    }
+  },
+  {
+    title: 'Weather App',
+    description: 'Real-time weather application with beautiful UI and accurate forecasts.',
+    image: 'https://i.imgur.com/1uP9fYx.jpg',
+    url: 'https://weather-app-eight-hazel-37.vercel.app/',
+    stats: {
+      views: 1650,
+      likes: 850,
+      shares: 320
+    }
+  },
+  {
     title: 'Orbit Wayfarer',
     description: 'An immersive travel and adventure booking platform.',
     image: 'https://i.imgur.com/Cxpa1Qs.jpg',
@@ -70,7 +125,7 @@ const projects = [
   },
   {
     title: 'Refresco-Bliss',
-    description: 'Refresco Bliss is a sleek e-commerce site for browsing and buying a variety of beverages, from whiskeys to sodas.',
+    description: 'Refresco Bliss is a sleek e-commerce site for browsing and buying a variety of beverages.',
     image: 'https://i.imgur.com/Mqt1xn6.jpg',
     url: 'https://refresco-bliss.vercel.app/',
     stats: {
@@ -81,7 +136,7 @@ const projects = [
   },
   {
     title: 'Netflix Clone',
-    description: 'My Netflix Clone is a movie streaming site with a Netflix-inspired design, featuring a landing page, login/signup, and movie playback.',
+    description: 'My Netflix Clone is a movie streaming site with a Netflix-inspired design.',
     image: 'https://i.imgur.com/tl1QLA5.jpg',
     url: 'https://netfl1x-clone-njogu.vercel.app/',
     stats: {

@@ -47,6 +47,17 @@ const StyledWrapper = styled.div`
 
 const projects = [
   {
+    title: 'Oasis Wellness',
+    description: 'A serene wellness platform offering holistic health services and mindful living guidance.',
+    image: 'https://i.imgur.com/7V64IS4.jpg',
+    url: 'https://oasis-wellness.vercel.app/',
+    stats: {
+      views: 3200,
+      likes: 1500,
+      shares: 520
+    }
+  },
+  {
     title: 'Zenith Hospital',
     description: 'Modern healthcare platform with advanced patient management system.',
     image: 'data:image/svg+xml,' + encodeURIComponent(`<?xml version="1.0" encoding="UTF-8"?>

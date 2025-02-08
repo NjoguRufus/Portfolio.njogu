@@ -30,7 +30,7 @@ const ProjectCard = ({ title, description, image, url, stats }: ProjectCardProps
                 playsInline
               >
                 <source src={image} type="video/mp4" />
-                Your browser does not support the video tag.
+                Your browser does not support the video tagg.
               </video>
             ) : (
               <img src={image} alt={title} className="project-media" />

@@ -47,6 +47,23 @@ const StyledWrapper = styled.div`
 
 const projects = [
   {
+    title: 'Zenith Hospital',
+    description: 'Modern healthcare platform with advanced patient management system.',
+    image: 'data:image/svg+xml,' + encodeURIComponent(`<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="32" height="32" rx="8" fill="#ffffff"/>
+  <path d="M16 6.66667V25.3333" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M6.66666 16H25.3333" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M8 16H24M16 8V24" stroke="#22C55E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>`),
+    url: 'https://zenith-hospital.vercel.app/',
+    stats: {
+      views: 2800,
+      likes: 1300,
+      shares: 480
+    }
+  },
+  {
     title: 'Astraronix',
     description: 'A cutting-edge space exploration and technology showcase platform.',
     image: 'https://i.imgur.com/0pC0Ouo.mp4',

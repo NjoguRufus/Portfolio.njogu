@@ -10,6 +10,7 @@ export default function App() {
   return (
     <div className="bg-gray-100 text-gray-900">
       <Navbar />
+      <meta name="google-site-verification" content="T05ZslJ0bhSKM110Rx75UWwZd05KkH38_jVvHG2xalc" />
       <Hero />
       <About />
       <Services />
